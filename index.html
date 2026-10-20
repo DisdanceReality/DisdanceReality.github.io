@@ -180,9 +180,9 @@
   <div class="wrap">
     <span class="brand">王绍宇</span>
     <a class="link" href="#about">简介</a>
+    <a class="link" href="#experience">经历</a>
     <a class="link" href="#research">代表性研究</a>
     <a class="link" href="#pubs">其他论文</a>
-    <a class="link" href="#experience">经历</a>
     <a class="link" href="#skills">技能与荣誉</a>
   </div>
 </nav>
@@ -210,6 +210,34 @@
       </div>
     </div>
   </header>
+
+  <section id="experience">
+    <h2>经历 <span class="en">Experience</span></h2>
+    <div class="two-col">
+      <div>
+        <h3 style="font-size:16px;margin:0 0 12px">教育背景</h3>
+        <div class="timeline">
+          <div class="item">
+            <span class="t">天津科技大学</span><span class="d">2024.09 – 2027.06（预计）</span>
+            <span class="s">电子信息（人工智能方向）硕士 · 考研专业第一入学</span>
+          </div>
+          <div class="item">
+            <span class="t">北华航天工业学院</span><span class="d">2020.09 – 2024.06</span>
+            <span class="s">计算机科学与技术 本科 · 绩点排名专业前十</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-size:16px;margin:0 0 12px">实习经历</h3>
+        <div class="timeline">
+          <div class="item">
+            <span class="t">奇岱松科技（Pinefield）</span><span class="d">2025.06 – 2025.09</span>
+            <span class="s">多模态大模型算法实习生 · 城市道路防汛监测项目：构建 7,500 张领域 VQA 数据集，完成 Qwen2.5-VL 全参 SFT 与基于 VERL 的 GRPO 训练，通过奖励权重设计使最高风险等级召回率接近 100%。该项目是 HydroReasoner 研究的出发点。</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section>
     <h2>研究方向 <span class="en">Research Interests</span></h2>
@@ -322,26 +350,30 @@
       <p class="zh-title">面向车路云动态地图的风险感知与安全问答</p>
       <p class="authors">Zhengshu Zhou, <b>Shaoyu Wang</b>, Lu Tao, Xinhui Hu, Jiaqi Gu, Tingting Zhao</p>
 
-      <div class="fig-row narrow-left">
+      <h4>研究动机</h4>
+      <p>
+        动态地图（DM）是车路云协同驾驶的核心信息基础设施：车辆与路侧单元通过协同感知把感知结果上传到云端，按更新频率组织为静态、半静态、半动态、动态四层，从而突破单车感知的视距与视野限制。
+        但它在驾驶安全方面仍有两个缺口：一是 DM 规范虽已预留道路状况语义层，却缺少把真实道路图像转化为<b>细粒度风险实体</b>的流程；
+        二是缺少面向驾驶安全的<b>自然语言交互接口</b>。
+      </p>
+
+      <div class="fig-row">
+        <figure class="figure">
+          <img src="assets/img/s4dm_dynamic_map.jpg" alt="动态地图四层结构" loading="lazy">
+          <figcaption>动态地图的四层结构：车辆与路侧单元通过协同感知上传感知结果，云端按更新频率组织为静态、半静态、半动态、动态四层；积水等道路风险属于半动态层。</figcaption>
+        </figure>
         <figure class="figure">
           <img src="assets/img/s4dm_motivation.jpg" alt="Safety4DM 应用示例" loading="lazy">
           <figcaption>应用示例：自动驾驶车辆通过车路云动态地图查询视距之外的道路风险，并获得风险等级与驾驶建议。</figcaption>
         </figure>
-        <div>
-          <h4 style="margin-top:0">研究动机</h4>
-          <p>
-            动态地图（DM）是车路云协同驾驶的核心信息基础设施，能突破单车感知的视距与视野限制。
-            但它在驾驶安全方面仍有两个缺口：一是 DM 规范虽已预留道路状况语义层，却缺少把真实道路图像转化为<b>细粒度风险实体</b>的流程；
-            二是缺少面向驾驶安全的<b>自然语言交互接口</b>。
-          </p>
-          <h4>核心想法</h4>
-          <ul class="ideas">
-            <li><b>风险感知</b>：构建 RoadRisk 数据集（6,000 张，4 类路况 × 4 级风险），微调视觉语言模型输出可直接写入动态地图的结构化风险实体。</li>
-            <li><b>工具增强的安全问答</b>：提出 SafeStep 分步提示机制，大模型负责解析问题，距离、TTC、THW、停车距离等安全指标交给确定性工具计算，再生成可执行的驾驶建议。</li>
-            <li><b>仿真平台与基准</b>：基于 SUMO、ROS2 与 PyQt6 搭建车路云协同仿真平台 SafeVRC-Sim，构建 1,600 个混合交通场景、18 类任务、约 2.35 万条问答的 SafeDM-QA 基准。</li>
-          </ul>
-        </div>
       </div>
+
+      <h4>核心想法</h4>
+      <ul class="ideas">
+        <li><b>风险感知</b>：构建 RoadRisk 数据集（6,000 张，4 类路况 × 4 级风险），微调视觉语言模型输出可直接写入动态地图的结构化风险实体。</li>
+        <li><b>工具增强的安全问答</b>：提出 SafeStep 分步提示机制，大模型负责解析问题，距离、TTC、THW、停车距离等安全指标交给确定性工具计算，再生成可执行的驾驶建议。</li>
+        <li><b>仿真平台与基准</b>：基于 SUMO、ROS2 与 PyQt6 搭建车路云协同仿真平台 SafeVRC-Sim，构建 1,600 个混合交通场景、18 类任务、约 2.35 万条问答的 SafeDM-QA 基准。</li>
+      </ul>
 
       <figure class="figure">
         <img src="assets/img/s4dm_framework.jpg" alt="Safety4DM 整体框架" loading="lazy">
@@ -410,33 +442,6 @@
     </div>
   </section>
 
-  <section id="experience">
-    <h2>经历 <span class="en">Experience</span></h2>
-    <div class="two-col">
-      <div>
-        <h3 style="font-size:16px;margin:0 0 12px">教育背景</h3>
-        <div class="timeline">
-          <div class="item">
-            <span class="t">天津科技大学</span><span class="d">2024.09 – 2027.06（预计）</span>
-            <span class="s">电子信息（人工智能方向）硕士 · 考研专业第一入学</span>
-          </div>
-          <div class="item">
-            <span class="t">北华航天工业学院</span><span class="d">2020.09 – 2024.06</span>
-            <span class="s">计算机科学与技术 本科 · 绩点排名专业前十</span>
-          </div>
-        </div>
-      </div>
-      <div>
-        <h3 style="font-size:16px;margin:0 0 12px">实习经历</h3>
-        <div class="timeline">
-          <div class="item">
-            <span class="t">奇岱松科技（Pinefield）</span><span class="d">2025.06 – 2025.09</span>
-            <span class="s">多模态大模型算法实习生 · 城市道路防汛监测项目：构建 7,500 张领域 VQA 数据集，完成 Qwen2.5-VL 全参 SFT 与基于 VERL 的 GRPO 训练，通过奖励权重设计使最高风险等级召回率接近 100%。该项目是 HydroReasoner 研究的出发点。</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section id="skills">
     <h2>技能与荣誉 <span class="en">Skills &amp; Honors</span></h2>
