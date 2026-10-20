@@ -121,6 +121,7 @@
   .fig-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .fig-row.narrow-left { grid-template-columns: 0.75fr 1.25fr; align-items: start; }
 
+  .byline-note { margin: -8px 0 18px; font-size: 14px; color: var(--muted); }
   .paper h4 { margin: 20px 0 8px; font-size: 16px; }
   .paper p { margin: 0 0 10px; }
   .ideas { margin: 0; padding-left: 20px; }
@@ -269,11 +270,13 @@
 
   <section id="research">
     <h2>代表性研究 <span class="en">Selected Research</span></h2>
+    <p class="byline-note">作者按原署名顺序列出，本人姓名加粗。以下两篇论文的第一作者为导师，本人为学生第一作者。</p>
 
     <!-- Safety4DM -->
     <article class="paper">
       <div class="venue">
         <span class="badge">IEEE Transactions on Intelligent Transportation Systems</span>
+        <span class="badge">新锐 1 区 Top · IF 9.1</span>
         <span class="badge status">审稿中</span>
         <span class="badge">学生第一作者</span>
       </div>
@@ -301,9 +304,9 @@
 
       <h4>核心想法</h4>
       <ul class="ideas">
-        <li><b>风险感知</b>：构建 RoadRisk 数据集（6,000 张，4 类路况 × 4 级风险），微调视觉语言模型输出可直接写入动态地图的结构化风险实体。</li>
+        <li><b>风险感知</b>：构建 RoadRisk 数据集（6,000 张，4 类路况 × 4 级风险），微调视觉语言模型输出可直接写入动态地图的结构化风险实体；领域微调后 2B 模型的联合风险感知准确率提升 55.25 个百分点，<b>超过零样本的 8B 模型</b>，说明领域适配比单纯扩大模型规模更有效。</li>
         <li><b>工具增强的安全问答</b>：提出 SafeStep 分步提示机制，大模型负责解析问题，距离、TTC、THW、停车距离等安全指标交给确定性工具计算，再生成可执行的驾驶建议。</li>
-        <li><b>仿真平台与基准</b>：基于 SUMO、ROS2 与 PyQt6 搭建车路云协同仿真平台 SafeVRC-Sim，构建 1,600 个混合交通场景、18 类任务、约 2.35 万条问答的 SafeDM-QA 基准。</li>
+        <li><b>仿真平台与基准</b>：基于 SUMO、ROS2 与 PyQt6 搭建车路云协同仿真平台 SafeVRC-Sim，将道路风险与车辆状态整合进动态地图；设计<b>基于属性—实体—关系（AER）图的问答生成方法</b>，以自车为中心组织周边车辆与道路风险并遮蔽目标属性生成问题，构建 1,600 个混合交通场景、18 类任务、约 2.35 万条问答的 SafeDM-QA 基准。</li>
       </ul>
 
       <figure class="figure">
@@ -347,6 +350,7 @@
     <article class="paper">
       <div class="venue">
         <span class="badge">IEEE Internet of Things Journal</span>
+        <span class="badge">新锐 1 区 Top · IF 8.9</span>
         <span class="badge status">第二轮审稿中</span>
         <span class="badge">学生第一作者</span>
       </div>
@@ -384,6 +388,14 @@
         <div class="stat"><div class="num">100%</div><div class="lbl">云边路由后的系统级高风险召回率，仅约 25% 样本上云</div></div>
       </div>
 
+      <h4>主要结果</h4>
+      <ul class="ideas">
+        <li><b>准确率与泛化</b>：域内 / 域外四分类准确率分别为 92.0% / 87.6%；域外以 1/10 参数量超过 Qwen2.5-VL-72B（70.1%），并优于闭源模型 <b>Gemini 3（81.0%）与 GPT-5（75.9%）</b>。</li>
+        <li><b>KG 路径奖励的作用</b>：消融实验中，去除 KG 路径奖励后域外准确率由 87.6% 降至 84.3%（−3.3 个百分点），推理链的结构完整性与逻辑一致性也明显下降。</li>
+        <li><b>安全性</b>：模型自身在域外高风险类别上的召回率达 99%；加入置信度路由后，系统级高风险召回率达到 100%，域外全部 5 个高风险漏判都被拦截并转交云端。</li>
+        <li><b>边缘部署效率</b>：AWQ 4-bit 量化后，Jetson AGX Orin 上显存由 16.7 GB 降至 7.1 GB，单图时延由 7.6 s 降至 4.3 s；域外仅 25.3% 的样本需要上云，边缘直接接收的样本准确率达 96.9%。</li>
+      </ul>
+
       <div class="fig-row">
         <figure class="figure">
           <img src="assets/img/hydro_samples.jpg" alt="HydroLevel 数据集样例" loading="lazy">
@@ -415,12 +427,13 @@
 
   <section id="pubs">
     <h2>其他论文 <span class="en">Other Publications</span></h2>
+    <p class="byline-note">作者按原署名顺序列出，本人姓名加粗。</p>
 
     <div class="mini">
       <img src="assets/img/fe_framework.jpg" alt="FE-CTGCN 框架" loading="lazy">
       <div>
         <div class="venue" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px">
-          <span class="badge">IEEE T-ITS 2026</span><span class="badge status">已录用</span><span class="badge">学生第二作者</span>
+          <span class="badge">IEEE T-ITS 2026</span><span class="badge">新锐 1 区 Top · IF 9.1</span><span class="badge status">已录用</span><span class="badge">学生第二作者</span>
         </div>
         <h3>FE-CTGCN: Topology Channel Graph Convolution Network Based on Feature Enhancement for Drowsiness Driving Detection</h3>
         <p class="authors" style="margin:0">Zhengshu Zhou, Ziyi Geng, <b>Shaoyu Wang</b>, Lu Tao, Qian Long, Xiankun Zhang</p>
