@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>王绍宇 Shaoyu Wang</title>
+<meta name="description" content="王绍宇（Shaoyu Wang），天津科技大学硕士研究生，研究方向为多模态大模型推理、强化学习后训练与车路云协同智能驾驶。">
+<style>
+  :root {
+    --bg: #fbfbf9;
+    --surface: #ffffff;
+    --text: #1d232b;
+    --muted: #5c6773;
+    --line: #e4e6e2;
+    --accent: #1f4e8c;
+    --accent-soft: #e8eef7;
+    --tag: #f1f3ef;
+    --shadow: 0 1px 2px rgba(20, 30, 40, .05), 0 4px 16px rgba(20, 30, 40, .04);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #14171b;
+      --surface: #1b1f24;
+      --text: #e6e8eb;
+      --muted: #9aa4af;
+      --line: #2c323a;
+      --accent: #8db4ec;
+      --accent-soft: #1f2a38;
+      --tag: #232930;
+      --shadow: none;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #14171b;
+    --surface: #1b1f24;
+    --text: #e6e8eb;
+    --muted: #9aa4af;
+    --line: #2c323a;
+    --accent: #8db4ec;
+    --accent-soft: #1f2a38;
+    --tag: #232930;
+    --shadow: none;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  img { max-width: 100%; display: block; }
+
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 16px; }
+
+  /* 顶部导航 */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap { display: flex; align-items: center; gap: 20px; height: 52px; overflow-x: auto; white-space: nowrap; }
+  nav .brand { font-weight: 600; color: var(--text); margin-right: auto; }
+  nav a.link { color: var(--muted); font-size: 14px; }
+  nav a.link:hover { color: var(--accent); text-decoration: none; }
+
+  /* 个人信息 */
+  header.hero { padding: 48px 0 28px; }
+  .hero-grid { display: grid; grid-template-columns: 168px 1fr; gap: 32px; align-items: center; }
+  .avatar { width: 168px; height: 210px; object-fit: cover; border-radius: 10px; border: 1px solid var(--line); }
+  .hero h1 { margin: 0; font-size: 32px; letter-spacing: .02em; }
+  .hero h1 small { font-size: 18px; font-weight: 400; color: var(--muted); margin-left: 10px; }
+  .hero .role { margin: 6px 0 14px; color: var(--muted); }
+  .hero .bio { margin: 0 0 16px; }
+  .contacts { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 5px 14px; border-radius: 999px;
+    border: 1px solid var(--line); background: var(--surface);
+    color: var(--text); font-size: 14px;
+  }
+  .btn:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+  /* 通用区块 */
+  section { padding: 28px 0; border-top: 1px solid var(--line); }
+  h2 { font-size: 22px; margin: 0 0 18px; display: flex; align-items: baseline; gap: 10px; }
+  h2 .en { font-size: 14px; font-weight: 400; color: var(--muted); letter-spacing: .04em; }
+
+  .interests { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .interest { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow); }
+  .interest b { display: block; margin-bottom: 4px; }
+  .interest p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
+
+  .news { list-style: none; padding: 0; margin: 0; }
+  .news li { display: grid; grid-template-columns: 92px 1fr; gap: 12px; padding: 6px 0; }
+  .news .date { color: var(--muted); font-variant-numeric: tabular-nums; }
+
+  /* 代表性研究 */
+  .paper {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+    padding: 26px 28px; margin-bottom: 26px; box-shadow: var(--shadow);
+  }
+  .paper .venue { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+  .badge { font-size: 12.5px; padding: 2px 10px; border-radius: 999px; background: var(--tag); color: var(--muted); }
+  .badge.status { background: var(--accent-soft); color: var(--accent); }
+  .paper h3 { margin: 0 0 6px; font-size: 20px; line-height: 1.45; }
+  .paper .zh-title { margin: 0 0 8px; color: var(--muted); font-size: 15px; }
+  .authors { font-size: 14.5px; color: var(--muted); margin: 0 0 18px; }
+  .authors b { color: var(--text); }
+
+  .figure { margin: 18px 0; }
+  .figure img { border-radius: 8px; border: 1px solid var(--line); background: #fff; cursor: zoom-in; width: 100%; }
+  .figure figcaption { font-size: 13.5px; color: var(--muted); margin-top: 8px; line-height: 1.6; }
+  .fig-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .fig-row.narrow-left { grid-template-columns: 0.75fr 1.25fr; align-items: start; }
+
+  .paper h4 { margin: 20px 0 8px; font-size: 16px; }
+  .paper p { margin: 0 0 10px; }
+  .ideas { margin: 0; padding-left: 20px; }
+  .ideas li { margin-bottom: 6px; }
+
+  .highlights { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 18px 0 6px; }
+  .stat { border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; background: var(--bg); }
+  .stat .num { font-size: 22px; font-weight: 650; color: var(--accent); font-variant-numeric: tabular-nums; line-height: 1.3; }
+  .stat .lbl { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+  details { margin-top: 14px; border-top: 1px dashed var(--line); padding-top: 12px; }
+  summary { cursor: pointer; color: var(--accent); font-size: 14.5px; }
+  details p { font-size: 14.5px; color: var(--muted); margin-top: 10px; line-height: 1.7; }
+
+  /* 其他论文 */
+  .mini { display: grid; grid-template-columns: 240px 1fr; gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .mini:last-child { border-bottom: 0; }
+  .mini img { border-radius: 8px; border: 1px solid var(--line); background: #fff; cursor: zoom-in; }
+  .mini h3 { margin: 0 0 4px; font-size: 16.5px; line-height: 1.5; }
+  .mini p { margin: 6px 0 0; font-size: 14.5px; }
+
+  /* 经历 */
+  .timeline { display: grid; gap: 14px; }
+  .item { display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; }
+  .item .t { font-weight: 600; }
+  .item .d { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .item .s { grid-column: 1 / -1; color: var(--muted); font-size: 14.5px; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .plain { margin: 0; padding-left: 20px; }
+  .plain li { margin-bottom: 4px; }
+
+  footer { padding: 28px 0 48px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); }
+
+  /* 图片放大 */
+  .lightbox { position: fixed; inset: 0; background: rgba(10, 12, 15, .88); display: none; align-items: center; justify-content: center; padding: 24px; z-index: 50; cursor: zoom-out; }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-height: 92vh; max-width: 96vw; border-radius: 6px; background: #fff; }
+
+  @media (max-width: 760px) {
+    header.hero { padding-top: 28px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 18px; }
+    .avatar { width: 120px; height: 150px; }
+    .hero h1 { font-size: 26px; }
+    .interests, .two-col { grid-template-columns: 1fr; }
+    .highlights { grid-template-columns: repeat(2, 1fr); }
+    .fig-row, .fig-row.narrow-left { grid-template-columns: 1fr; }
+    .paper { padding: 20px 18px; }
+    .mini { grid-template-columns: 1fr; }
+    .news li { grid-template-columns: 1fr; gap: 0; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="brand">王绍宇</span>
+    <a class="link" href="#about">简介</a>
+    <a class="link" href="#research">代表性研究</a>
+    <a class="link" href="#pubs">其他论文</a>
+    <a class="link" href="#experience">经历</a>
+    <a class="link" href="#skills">技能与荣誉</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="hero" id="about">
+    <div class="hero-grid">
+      <img class="avatar" src="assets/img/avatar.jpg" alt="王绍宇照片">
+      <div>
+        <h1>王绍宇<small>Shaoyu Wang</small></h1>
+        <p class="role">天津科技大学 人工智能学院 · 电子信息（人工智能方向）硕士研究生 · 导师：周正书 教授</p>
+        <p class="bio">
+          我的研究关注<b>多模态大模型在安全关键交通场景中的可验证推理</b>：让模型不仅给出判断，还能给出可检验、符合领域规则的推理过程，并能在车路云系统中落地部署。
+          目前正在申请 2027 年入学的计算机/人工智能方向博士。
+        </p>
+        <div class="contacts">
+          <a class="btn" href="mailto:24836940@mail.tust.edu.cn">✉ 24836940@mail.tust.edu.cn</a>
+          <!-- 把去掉电话号码的简历放到 assets/cv.pdf 后取消注释 -->
+          <!-- <a class="btn" href="assets/cv.pdf" target="_blank" rel="noopener">📄 简历 PDF</a> -->
+          <!-- 有 GitHub / Google Scholar 后取消注释并替换链接 -->
+          <!-- <a class="btn" href="https://github.com/your-name" target="_blank" rel="noopener">GitHub</a> -->
+          <!-- <a class="btn" href="https://scholar.google.com/" target="_blank" rel="noopener">Google Scholar</a> -->
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <h2>研究方向 <span class="en">Research Interests</span></h2>
+    <div class="interests">
+      <div class="interest">
+        <b>多模态大模型推理</b>
+        <p>视觉语言模型的显式推理、知识引导的可验证推理链、领域知识图谱与大模型结合。</p>
+      </div>
+      <div class="interest">
+        <b>强化学习后训练</b>
+        <p>基于 GRPO 的大模型后训练、过程奖励设计、面向安全需求的奖励塑形。</p>
+      </div>
+      <div class="interest">
+        <b>车路云协同与智能驾驶</b>
+        <p>道路风险感知、车路云动态地图、云边协同推理与边缘量化部署。</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>近期动态 <span class="en">News</span></h2>
+    <ul class="news">
+      <li><span class="date">2026.10</span><span>Safety4DM 投稿至 <i>IEEE Transactions on Intelligent Transportation Systems</i>。</span></li>
+      <li><span class="date">2026.08</span><span>HydroReasoner 进入 <i>IEEE Internet of Things Journal</i> 第二轮审稿。</span></li>
+      <li><span class="date">2026.03</span><span>合作论文 FE-CTGCN 被 <i>IEEE Transactions on Intelligent Transportation Systems</i> 录用。</span></li>
+      <li><span class="date">2025.06</span><span>加入奇岱松科技（Pinefield）担任多模态大模型算法实习生。</span></li>
+    </ul>
+  </section>
+
+  <section id="research">
+    <h2>代表性研究 <span class="en">Selected Research</span></h2>
+
+    <!-- HydroReasoner -->
+    <article class="paper">
+      <div class="venue">
+        <span class="badge">IEEE Internet of Things Journal</span>
+        <span class="badge status">第二轮审稿中</span>
+        <span class="badge">学生第一作者</span>
+      </div>
+      <h3>Knowledge-Guided Floodwater Level Reasoning for Cloud-Edge Collaborative Monitoring</h3>
+      <p class="zh-title">知识引导的积水等级推理与云边协同监测（HydroReasoner）</p>
+      <p class="authors">Zhengshu Zhou, <b>Shaoyu Wang</b>, Ziyi Geng, Lu Tao, Qian Long</p>
+
+      <figure class="figure">
+        <img src="assets/img/hydro_overview.jpg" alt="HydroReasoner 系统总览" loading="lazy">
+        <figcaption>系统总览：无人机、行车记录仪、路侧摄像头等多源图像经 5G 汇聚，在边缘侧进行可解释的积水等级推理，低置信度样本路由至云端复核。</figcaption>
+      </figure>
+
+      <h4>研究动机</h4>
+      <p>
+        现有视觉方法把积水深度估计当作分类任务，缺乏可解释的判断依据，跨视角、跨场景泛化差。
+        而 GRPO 等主流强化学习方法只奖励格式与最终答案，无法保证推理过程的质量；过程奖励又依赖昂贵的步骤级标注。
+      </p>
+
+      <h4>核心想法</h4>
+      <ul class="ideas">
+        <li><b>把分类改造成显式视觉推理</b>：模型按“参照物 → 水位线证据 → 相对深度 → 积水等级”逐步推理，像人一样借助车轮、行人等参照物判断水深。</li>
+        <li><b>知识图谱路径作为过程奖励</b>：将积水分级规则形式化为五层领域知识图谱 HydroKG，通过确定性图遍历校验推理链的结构完整性与逻辑一致性，在<b>无需步骤级标注</b>的条件下细粒度监督推理过程。</li>
+        <li><b>面向云边协同的部署</b>：AWQ 4-bit 量化后部署于 Jetson AGX Orin；设计无需真值的置信度路由（格式有效性、KG 路径有效性、采样一致性、等级后验置信度），只把不确定的样本送上云端。</li>
+      </ul>
+
+      <figure class="figure">
+        <img src="assets/img/hydro_framework.jpg" alt="HydroReasoner 方法框架" loading="lazy">
+        <figcaption>方法框架：策略模型生成结构化推理路径 → HydroKG 校验路径的完整性与一致性 → KG 路径奖励、格式奖励与准确率奖励共同驱动 GRPO 更新。</figcaption>
+      </figure>
+
+      <div class="highlights">
+        <div class="stat"><div class="num">87.6%</div><div class="lbl">域外四分类准确率，以 1/10 参数量超过 Qwen2.5-VL-72B（70.1%）</div></div>
+        <div class="stat"><div class="num">+5.2</div><div class="lbl">域外准确率较同基座 SFT 提升（百分点）</div></div>
+        <div class="stat"><div class="num">16.7→7.1 GB</div><div class="lbl">Jetson Orin 上 4-bit 量化后的显存，准确率仅降 0.2 个百分点</div></div>
+        <div class="stat"><div class="num">100%</div><div class="lbl">云边路由后的系统级高风险召回率，仅约 25% 样本上云</div></div>
+      </div>
+
+      <div class="fig-row">
+        <figure class="figure">
+          <img src="assets/img/hydro_samples.jpg" alt="HydroLevel 数据集样例" loading="lazy">
+          <figcaption>HydroLevel 数据集（3,000 张）覆盖 CCTV、无人机、行车记录仪等多视角与昼夜场景。</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="assets/img/hydro_reasoning.jpg" alt="推理过程对比" loading="lazy">
+          <figcaption>推理过程对比：HydroReasoner 以参照物为依据给出等级判断，而通用大模型容易描述场景却判断失准。</figcaption>
+        </figure>
+      </div>
+
+      <details>
+        <summary>英文摘要 Abstract</summary>
+        <p>
+          Frequent urban floodwater poses a serious threat to the safety and efficiency of intelligent transportation systems.
+          Existing vision-based methods for floodwater level detection face two main limitations. First, the lack of explicit reasoning leads to poor detection performance and little interpretability.
+          Second, these methods struggle to generalize to the complex and varied real-world road scenes seen from different viewpoints.
+          To address this, we reformulate the task as an explicit visual reasoning problem and propose HydroReasoner, a floodwater level reasoning framework designed for cloud-edge collaboration.
+          HydroReasoner builds on Qwen2.5-VL and is trained with Group Relative Policy Optimization. To address the scarcity of reasoning process annotations, we build a floodwater domain knowledge graph HydroKG and design a novel KG path reward.
+          Through deterministic graph traversal over HydroKG, this reward supervises the model's reasoning process at a fine granularity, which improves both reasoning and generalization.
+          For edge deployment, we apply 4-bit quantization to the model, cutting GPU memory usage by 57% and inference latency by 43% while out-of-domain accuracy drops by only 0.2 percentage points.
+          We also propose a confidence-based cloud-edge routing mechanism, which improves system safety and eases the computational load on the cloud.
+          In addition, we build HydroLevel, a floodwater benchmark dataset of 3,000 images, for training and evaluating the model.
+          Experimental results show that HydroReasoner achieves detection accuracy 4.0 and 13.6 percentage points higher than conventional vision baselines in the in-domain and out-of-domain evaluations respectively, with performance dropping by only 4.4 percentage points out of domain.
+        </p>
+      </details>
+    </article>
+
+    <!-- Safety4DM -->
+    <article class="paper">
+      <div class="venue">
+        <span class="badge">IEEE Transactions on Intelligent Transportation Systems</span>
+        <span class="badge status">审稿中</span>
+        <span class="badge">学生第一作者</span>
+      </div>
+      <h3>Safety4DM: A Vision-Language Framework for Risk-Aware Dynamic Maps in Vehicle–Road–Cloud Collaborative Driving</h3>
+      <p class="zh-title">面向车路云动态地图的风险感知与安全问答</p>
+      <p class="authors">Zhengshu Zhou, <b>Shaoyu Wang</b>, Lu Tao, Xinhui Hu, Jiaqi Gu, Tingting Zhao</p>
+
+      <div class="fig-row narrow-left">
+        <figure class="figure">
+          <img src="assets/img/s4dm_motivation.jpg" alt="Safety4DM 应用示例" loading="lazy">
+          <figcaption>应用示例：自动驾驶车辆通过车路云动态地图查询视距之外的道路风险，并获得风险等级与驾驶建议。</figcaption>
+        </figure>
+        <div>
+          <h4 style="margin-top:0">研究动机</h4>
+          <p>
+            动态地图（DM）是车路云协同驾驶的核心信息基础设施，能突破单车感知的视距与视野限制。
+            但它在驾驶安全方面仍有两个缺口：一是 DM 规范虽已预留道路状况语义层，却缺少把真实道路图像转化为<b>细粒度风险实体</b>的流程；
+            二是缺少面向驾驶安全的<b>自然语言交互接口</b>。
+          </p>
+          <h4>核心想法</h4>
+          <ul class="ideas">
+            <li><b>风险感知</b>：构建 RoadRisk 数据集（6,000 张，4 类路况 × 4 级风险），微调视觉语言模型输出可直接写入动态地图的结构化风险实体。</li>
+            <li><b>工具增强的安全问答</b>：提出 SafeStep 分步提示机制，大模型负责解析问题，距离、TTC、THW、停车距离等安全指标交给确定性工具计算，再生成可执行的驾驶建议。</li>
+            <li><b>仿真平台与基准</b>：基于 SUMO、ROS2 与 PyQt6 搭建车路云协同仿真平台 SafeVRC-Sim，构建 1,600 个混合交通场景、18 类任务、约 2.35 万条问答的 SafeDM-QA 基准。</li>
+          </ul>
+        </div>
+      </div>
+
+      <figure class="figure">
+        <img src="assets/img/s4dm_framework.jpg" alt="Safety4DM 整体框架" loading="lazy">
+        <figcaption>整体框架：① 道路风险感知 → ② SafeVRC-Sim 车路云协同仿真 → ③ SafeDM-QA 安全问答基准 → ④ SafeStep 分步推理。</figcaption>
+      </figure>
+
+      <div class="highlights">
+        <div class="stat"><div class="num">89.83%</div><div class="lbl">微调后 Qwen3-VL-4B 的联合风险感知准确率</div></div>
+        <div class="stat"><div class="num">&gt;93%</div><div class="lbl">五个模型家族的中大型模型（≥20B）查询准确率</div></div>
+        <div class="stat"><div class="num">96.3→33.7%</div><div class="lbl">消融：去除工具箱后整体查询准确率大幅下降</div></div>
+        <div class="stat"><div class="num">2.35 万</div><div class="lbl">SafeDM-QA 安全问答数据，覆盖 18 类查询任务</div></div>
+      </div>
+
+      <div class="fig-row">
+        <figure class="figure">
+          <img src="assets/img/s4dm_roadrisk.jpg" alt="RoadRisk 数据集样例" loading="lazy">
+          <figcaption>RoadRisk 数据集样例：积水、积雪、障碍物三类路况在不同风险等级下的典型图像，红框为分级依据区域。</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="assets/img/s4dm_safestep.jpg" alt="SafeStep 机制" loading="lazy">
+          <figcaption>SafeStep：问题解析 → 确定性风险计算 → 安全响应生成。</figcaption>
+        </figure>
+      </div>
+
+      <details>
+        <summary>英文摘要 Abstract</summary>
+        <p>
+          Dynamic map (DM) is a core information infrastructure for vehicle-road-cloud (VRC) cooperative autonomous driving. It fuses perception data from multiple sources to overcome the inherent line-of-sight and field-of-view limits of single-vehicle perception.
+          However, DM still falls short on driving safety in two ways. First, DM data specifications already define road conditions semantically, but no pipeline yet turns real-world road observations into fine-grained risk entities in the DM.
+          Second, existing DM systems lack a natural language interface for driving risks. To close these gaps, we propose Safety4DM, a safety-oriented language system for VRC dynamic maps.
+          We first build RoadRisk, a real-world road image dataset that covers four types of road conditions and four risk levels. On this dataset, we fine-tune a vision-language model (VLM) for road safety risk perception. The model outputs structured risk representations that the DM can ingest directly.
+          We then introduce a Safety-aware Step-wise Prompting (SafeStep) mechanism as the natural language query interface of the DM. SafeStep answers queries accurately and also generates actionable driving advice.
+          To build and evaluate this interface, we develop SafeVRC-Sim, a VRC cooperative simulation framework, and SafeDM-QA, a safety question-answering benchmark.
+          Experiments show that even the compact Qwen3-VL-4B reaches 89.83% accuracy on risk perception after fine-tuning. SafeStep also plugs easily into multiple LLM families. With medium and large models (20B and above) from five families, it achieves over 93% natural language query accuracy in every case, which shows strong generalization.
+        </p>
+      </details>
+    </article>
+  </section>
+
+  <section id="pubs">
+    <h2>其他论文 <span class="en">Other Publications</span></h2>
+
+    <div class="mini">
+      <img src="assets/img/fe_framework.jpg" alt="FE-CTGCN 框架" loading="lazy">
+      <div>
+        <div class="venue" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px">
+          <span class="badge">IEEE T-ITS 2026</span><span class="badge status">已录用</span><span class="badge">学生第二作者</span>
+        </div>
+        <h3>FE-CTGCN: Topology Channel Graph Convolution Network Based on Feature Enhancement for Drowsiness Driving Detection</h3>
+        <p class="authors" style="margin:0">Zhengshu Zhou, Ziyi Geng, <b>Shaoyu Wang</b>, Lu Tao, Qian Long, Xiankun Zhang</p>
+        <p>融合整脸与五个局部面部区域的特征，结合注意力融合、LSTM 时序建模与通道拓扑图卷积进行驾驶员疲劳检测；在 DROZY 与 UTA-RLDD 上三分类准确率分别达到 96.41% 与 97.79%。
+          <a href="https://doi.org/10.1109/TITS.2026.3675025" target="_blank" rel="noopener">DOI</a></p>
+      </div>
+    </div>
+
+    <div class="mini">
+      <img src="assets/img/cow_framework.jpg" alt="Improved-DeepLabV3+ 框架" loading="lazy">
+      <div>
+        <div class="venue" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px">
+          <span class="badge">Information Processing in Agriculture</span><span class="badge status">第二轮审稿中</span><span class="badge">学生第二作者</span>
+        </div>
+        <h3>An Attention-Augmented DeepLabV3+ Algorithm with Layer-wise Feature Fusion Decoder for Efficient Cattle Segmentation</h3>
+        <p class="authors" style="margin:0">Jucheng Yang, Qingxiang Jia, <b>Shaoyu Wang</b>, et al.</p>
+        <p>面向农场低分辨率场景，以 MobileNetV2 替换 Xception 主干，引入 EMCAM 与 SE 注意力及逐层特征融合解码器；相比原始 DeepLabV3+，MIoU 提升 1.54%，推理速度提升 5.14 倍，参数量降至约 1/12。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>经历 <span class="en">Experience</span></h2>
+    <div class="two-col">
+      <div>
+        <h3 style="font-size:16px;margin:0 0 12px">教育背景</h3>
+        <div class="timeline">
+          <div class="item">
+            <span class="t">天津科技大学</span><span class="d">2024.09 – 2027.06（预计）</span>
+            <span class="s">电子信息（人工智能方向）硕士 · 考研专业第一入学</span>
+          </div>
+          <div class="item">
+            <span class="t">北华航天工业学院</span><span class="d">2020.09 – 2024.06</span>
+            <span class="s">计算机科学与技术 本科 · 绩点排名专业前十</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-size:16px;margin:0 0 12px">实习经历</h3>
+        <div class="timeline">
+          <div class="item">
+            <span class="t">奇岱松科技（Pinefield）</span><span class="d">2025.06 – 2025.09</span>
+            <span class="s">多模态大模型算法实习生 · 城市道路防汛监测项目：构建 7,500 张领域 VQA 数据集，完成 Qwen2.5-VL 全参 SFT 与基于 VERL 的 GRPO 训练，通过奖励权重设计使最高风险等级召回率接近 100%。该项目是 HydroReasoner 研究的出发点。</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>技能与荣誉 <span class="en">Skills &amp; Honors</span></h2>
+    <div class="two-col">
+      <div>
+        <ul class="plain">
+          <li><b>大模型训练与部署</b>：全参 SFT、LoRA、GRPO 强化学习后训练与奖励设计；LLaMA-Factory、VERL；AWQ 量化与 Jetson 边缘部署</li>
+          <li><b>编程与工具</b>：Python、PyTorch、OpenCV、NumPy、Pandas；Linux、Git</li>
+          <li><b>仿真平台</b>：SUMO、ROS2、PyQt6</li>
+          <li><b>英语</b>：CET-6，能独立阅读英文文献并撰写英文论文</li>
+        </ul>
+      </div>
+      <div>
+        <ul class="plain">
+          <li>研究生二等学业奖学金</li>
+          <li>蓝桥杯省级二等奖（Web 组、Python 组）</li>
+          <li>台达杯华北赛区二等奖</li>
+          <li>全国高校计算机能力挑战赛程序设计赛华北赛区三等奖</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    在审论文的内容与图表版权归全体作者所有，仅用于学术交流展示，请勿转载。最后更新：2026 年 10 月。
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" aria-hidden="true"><img alt=""></div>
+
+<script>
+  // 点击论文图片放大查看
+  const box = document.getElementById('lightbox');
+  const boxImg = box.querySelector('img');
+  document.querySelectorAll('.figure img, .mini img').forEach(img => {
+    img.addEventListener('click', () => {
+      boxImg.src = img.src;
+      boxImg.alt = img.alt;
+      box.classList.add('open');
+    });
+  });
+  box.addEventListener('click', () => box.classList.remove('open'));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') box.classList.remove('open'); });
+</script>
+</body>
+</html>
