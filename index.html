@@ -121,6 +121,10 @@
   .fig-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .fig-row.narrow-left { grid-template-columns: 0.75fr 1.25fr; align-items: start; }
 
+  .patents { margin: 0; padding-left: 20px; }
+  .patents li { margin-bottom: 10px; }
+  .patents .badge { margin-left: 6px; white-space: nowrap; }
+  .patent-note { margin: 12px 0 0; font-size: 14px; color: var(--muted); }
   .byline-note { margin: -8px 0 18px; font-size: 14px; color: var(--muted); }
   .paper h4 { margin: 20px 0 8px; font-size: 16px; }
   .paper p { margin: 0 0 10px; }
@@ -184,6 +188,7 @@
     <a class="link" href="#experience">经历</a>
     <a class="link" href="#research">代表性研究</a>
     <a class="link" href="#pubs">其他论文</a>
+    <a class="link" href="#patents">专利</a>
     <a class="link" href="#skills">技能与荣誉</a>
   </div>
 </nav>
@@ -395,6 +400,7 @@
         <li><b>安全性</b>：模型自身在域外高风险类别上的召回率达 99%；加入置信度路由后，系统级高风险召回率达到 100%，域外全部 5 个高风险漏判都被拦截并转交云端。</li>
         <li><b>边缘部署效率</b>：AWQ 4-bit 量化后，Jetson AGX Orin 上显存由 16.7 GB 降至 7.1 GB，单图时延由 7.6 s 降至 4.3 s；域外仅 25.3% 的样本需要上云，边缘直接接收的样本准确率达 96.9%。</li>
       </ul>
+      <p class="patent-note">相关方法已申请中国发明专利《一种道路积水等级推理模型训练方法、系统、设备及介质》（本人为第一发明人，已受理）。</p>
 
       <div class="fig-row">
         <figure class="figure">
@@ -453,6 +459,22 @@
         <p>面向农场低分辨率场景，以 MobileNetV2 替换 Xception 主干，引入 EMCAM 与 SE 注意力及逐层特征融合解码器；相比原始 DeepLabV3+，MIoU 提升 1.54%，推理速度提升 5.14 倍，参数量降至约 1/12。</p>
       </div>
     </div>
+  </section>
+
+  <section id="patents">
+    <h2>发明专利 <span class="en">Patents</span></h2>
+    <p class="byline-note">发明人按原顺序列出，本人姓名加粗。</p>
+    <ul class="patents">
+      <li>
+        <b>王绍宇</b>，周正书. 一种道路积水等级推理模型训练方法、系统、设备及介质. 中国发明专利
+        <span class="badge status">已受理 · 初审中</span>
+        <span class="badge">第一发明人</span>
+      </li>
+      <li>
+        周正书，<b>王绍宇</b>. 软件需求可学习化表征方法、工具及计算机程序. 中国发明专利
+        <span class="badge status">已受理 · 初审中</span>
+      </li>
+    </ul>
   </section>
 
 
